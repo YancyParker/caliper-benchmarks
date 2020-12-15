@@ -1,7 +1,7 @@
 simpleArgs: &simple-args
   initialMoney: 10000
-  moneyToTransfer: 100
-  numberOfAccounts: &number-of-accounts 1000
+  moneyToTransfer: 1
+  numberOfAccounts: &number-of-accounts 5000
 
 test:
   name: simple
@@ -20,7 +20,7 @@ test:
       rateControl:
         type: fixed-rate
         opts:
-          tps: 50
+          tps: 500
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
@@ -30,19 +30,19 @@ test:
       rateControl:
         type: fixed-rate
         opts:
-          tps: 100
+          tps: 500
       workload:
         module: benchmarks/scenario/simple/query.js
         arguments: *simple-args
     - label: transfer
       description: Test description for transfering money between accounts.
-      txNumber: 50
+      txNumber: 1000
       rateControl:
         type: fixed-rate
         opts:
-          tps: 5
+          tps: 100
       workload:
         module: benchmarks/scenario/simple/transfer.js
         arguments:
           << : *simple-args
-          money: 100
+          money: 1
